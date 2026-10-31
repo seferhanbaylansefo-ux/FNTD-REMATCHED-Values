@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b12">
+  <title>FNTD Values</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="FNTD Values home">
+        <span class="brand-mark">F</span>
+        <span>FNTD<span class="brand-muted"> VALUES</span></span>
+      </a>
+      <nav class="nav">
+        <button class="nav-link active" data-page="units">Unit Values</button>
+        <button class="nav-link" data-page="calculator">Trading Calculator</button>
+      </nav>
+      <a class="source-link" href="https://github.com/seferhanbaylansefo-ux" target="_blank" rel="noreferrer">GITHUB ↗</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> COMMUNITY VALUE DATABASE</div>
+        <h1>FNAF TOWER DEFENSE<br><span>VALUE LIST</span></h1>
+        <p class="hero-copy">Explore units, compare stats and calculate your trades.</p>
+        <div class="stats-strip">
+          <div class="stat-box"><strong id="unit-count">—</strong><span>UNITS LOADED</span></div>
+          <div class="stat-box"><strong id="rarity-count">—</strong><span>RARITIES</span></div>
+          <div class="stat-box"><strong id="updated-at">—</strong><span>LAST SYNC</span></div>
+        </div>
+      </section>
+
+      <section id="units-page" class="page">
+        <div class="section-heading">
+          <div><div class="eyebrow">DATABASE</div><h2>Unit <span>Values</span></h2></div>
+          <div id="load-status" class="load-status">Connecting to GitHub…</div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search units..." autocomplete="off"></label>
+          <select id="rarity-filter" aria-label="Filter by rarity"><option value="">All rarities</option></select>
+          <select id="sort-filter" aria-label="Sort units">
+            <option value="name">Name: A–Z</option>
+            <option value="value-high">Value: High to Low</option>
+            <option value="value-low">Value: Low to High</option>
+            <option value="rarity">Rarity</option>
+          </select>
+        </div>
+        <div id="unit-grid" class="unit-grid">
+          <div class="loading-card">Loading units from both GitHub sources…</div>
+        </div>
+        <div id="empty-state" class="empty-state hidden">No units match your search.</div>
+      </section>
+
+      <section id="calculator-page" class="page hidden">
+        <div class="section-heading">
+          <div><div class="eyebrow">TRADE TOOL</div><h2>Trading <span>Calculator</span></h2></div>
+          <div class="load-status">Select units for both sides</div>
+        </div>
+        <div class="trade-controls">
+          <label class="search-wrap"><span>⌕</span><input id="trade-search" type="search" placeholder="Find a unit to add..."></label>
+          <select id="trade-side"><option value="left">Your Offer</option><option value="right">Their Offer</option></select>
+          <button id="add-trade-unit" class="primary-btn">+ Add selected unit</button>
+        </div>
+        <div id="trade-picker" class="trade-picker hidden"></div>
+        <div class="trade-columns">
+          <div class="trade-panel">
+            <div class="trade-panel-head"><div><span class="side-dot blue"></span><h3>Your Offer</h3></div><strong id="left-total">0</strong></div>
+            <div id="left-items" class="trade-items"><p class="muted">Add units to your offer.</p></div>
+          </div>
+          <div class="trade-panel">
+            <div class="trade-panel-head"><div><span class="side-dot purple"></span><h3>Their Offer</h3></div><strong id="right-total">0</strong></div>
+            <div id="right-items" class="trade-items"><p class="muted">Add units to their offer.</p></div>
+          </div>
+        </div>
+        <div class="trade-result">
+          <div><div class="eyebrow">TRADE RESULT</div><h2 id="trade-verdict">Add units to compare</h2><p id="trade-difference" class="muted">The result is based on the values you enter.</p></div>
+          <button id="clear-trade" class="secondary-btn">Clear trade</button>
+        </div>
+        <p class="disclaimer">W/F/L is an estimate based only on entered values. It does not represent official game data or guaranteed market prices.</p>
+      </section>
+    </main>
+
+    <footer><span>FNTD VALUES</span><span>Fan-made community project · Not affiliated with Roblox or FNAF.</span></footer>
+  </div>
+
+  <div id="unit-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Close">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
